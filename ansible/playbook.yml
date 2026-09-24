@@ -1,0 +1,39 @@
+---
+- hosts: wordpress
+  become: true
+  vars_files:
+    - secrets.yml
+
+  tasks:
+    - name: Update packages
+      apt:
+        update_cache: true
+
+    - name: Install Apache, PHP, MySQL client, unzip, wget
+      apt:
+        name:
+          - apache2
+          - php
+          - php-mysql
+          - mysql-client
+          - unzip
+          - wget
+        state: present
+
+    - name: Download WordPress
+      get_url:
+        url: https://wordpress.org/latest.zip
+        dest: /tmp/latest.zip
+        mode: "0644"
+
+    - name: Unzip WordPress
+      unarchive:
+        src: /tmp/latest.zip
+        dest: /var/www/html/
+        remote_src: true
+
+    - name: Apply WordPress config
+      template:
+        src: wp-config.php.j2
+        dest: /var/www/html/wordpress/wp-config.php
+        mode: "0640"

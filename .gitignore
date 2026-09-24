@@ -1,0 +1,29 @@
+# Terraform runtime/state
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+*.tfplan
+tfplan
+crash.log
+crash.*.log
+
+# Local variable/secrets files
+*.tfvars
+!*.tfvars.example
+*.tfvars.json
+.env
+.env.*
+secrets.yml
+
+# Private keys
+*.pem
+*.key
+
+# Local Ansible inventory
+inventory.ini
+
+# Editors / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
