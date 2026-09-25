@@ -12,25 +12,9 @@ A hands-on cloud migration project that moves a legacy WordPress application and
 - Add basic CloudWatch alarms for EC2 CPU and RDS free storage.
 
 ## Architecture implemented
+## Architecture Implemented
+
 ![AWS WordPress Migration Architecture](docs/architecture/aws-wordpress-migration-architecture.png)
-```text
-Internet
-   |
-Internet Gateway
-   |
-Public Subnet (us-east-1a)
-   |
-EC2: Apache + PHP + WordPress
-   |
-Security-group-to-security-group MySQL access (3306)
-   |
-RDS MySQL (publicly_accessible = false)
-
-S3 migration bucket <--- EC2 IAM role (read-only)
-CloudWatch ---------> EC2 CPU / RDS free-storage alarms
-```
-
-The original learning implementation creates one public subnet and one private subnet in separate Availability Zones. The RDS subnet group references both of those subnets. See **Production improvements** below for how I would redesign the database network for a production workload.
 
 ## AWS services and tools
 
