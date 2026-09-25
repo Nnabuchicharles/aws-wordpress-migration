@@ -12,7 +12,6 @@ A hands-on cloud migration project that moves a legacy WordPress application and
 - Add basic CloudWatch alarms for EC2 CPU and RDS free storage.
 
 ## Architecture implemented
-## Architecture Implemented
 
 ![AWS WordPress Migration Architecture](docs/architecture/aws-wordpress-migration-architecture.png)
 
